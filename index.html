@@ -182,22 +182,45 @@
 
   /* SOBRE */
   .sobre-section { background: white; padding: 60px 20px; text-align: center; }
-  .sobre-section p { 
-    max-width: 750px; 
-    margin: 0 auto; 
-    font-size: 17px; 
-    color: #555; 
-    line-height: 1.8; 
-    text-align: center;
-  }
+  .sobre-section p { max-width: 750px; margin: 0 auto; font-size: 17px; color: #555; line-height: 1.8; text-align: center; }
 
-  /* CONTATO / NEWSLETTER */
-  .newsletter { background: #a61e4d; color: white; text-align: center; padding: 60px 20px; margin-top: 40px; /* MARGEM ADICIONADA AQUI PARA SEPARAR */ }
-  .newsletter h2 { margin-bottom: 10px; font-size: 28px; }
-  .newsletter p { margin-bottom: 25px; }
-  .newsletter-form { display: flex; justify-content: center; gap: 10px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; }
-  .newsletter-form input { padding: 15px; border-radius: 30px; border: none; flex: 1; min-width: 200px; outline: none; font-size: 16px; }
-  .newsletter-form button { padding: 15px 30px; border-radius: 30px; border: none; background: #ffe066; color: #a61e4d; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
+  /* CONTATO & ATENDIMENTO */
+  .contato-section { background: #a61e4d; color: white; text-align: center; padding: 60px 20px; margin-top: 40px; }
+  .contato-section h2 { margin-bottom: 10px; font-size: 28px; }
+  .contato-section > p { margin-bottom: 40px; font-size: 18px; }
+  
+  .contato-container {
+    display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+  }
+  
+  /* CARD DE ATENDIMENTO (ASSISTENTE) */
+  .atendimento-card {
+    background: white; color: #333; padding: 30px; border-radius: 15px; width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center;
+  }
+  .atendimento-card img {
+    width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;
+    border: 3px solid #f06595;
+  }
+  .atendimento-card h3 { font-size: 20px; color: #a61e4d; margin-bottom: 5px; }
+  .atendimento-card p { font-size: 14px; color: #666; margin-bottom: 20px; }
+  .btn-whatsapp {
+    background: #25D366; color: white; text-decoration: none; padding: 12px 20px;
+    border-radius: 30px; font-weight: bold; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;
+    transition: 0.3s;
+  }
+  .btn-whatsapp:hover { background: #1EBE5D; transform: scale(1.05); }
+  
+  /* CARD DE NEWSLETTER */
+  .newsletter-card {
+    background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; width: 300px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .newsletter-card h3 { font-size: 20px; margin-bottom: 10px; }
+  .newsletter-card p { font-size: 14px; margin-bottom: 20px; }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input { padding: 12px; border-radius: 5px; border: none; outline: none; font-size: 15px; }
+  .newsletter-form button { padding: 12px; border-radius: 5px; border: none; background: #ffe066; color: #a61e4d; font-weight: bold; cursor: pointer; font-size: 15px; transition: 0.3s; }
   .newsletter-form button:hover { background: white; }
   
   /* NOTIFICAÇÃO */
@@ -216,6 +239,7 @@
     nav { display: none; }
     .banner h1 { font-size: 32px; }
     .admin-product-form { grid-template-columns: 1fr; }
+    .contato-container { flex-direction: column; align-items: center; }
   }
 </style>
 </head>
@@ -277,14 +301,37 @@
   </p>
 </section>
 
-<!-- SEÇÃO CONTATO (AGORA SEPARADA DA DE CIMA) -->
-<section class="newsletter" id="contato">
-  <h2>Ganhe 10% de desconto na primeira compra!</h2>
-  <p>Cadastre seu e-mail e receba novidades e ofertas exclusivas.</p>
-  <form class="newsletter-form" onsubmit="event.preventDefault(); mostrarToast('E-mail cadastrado com sucesso! 💌');">
-    <input type="email" placeholder="Seu melhor e-mail" required>
-    <button type="submit">Quero Desconto</button>
-  </form>
+<!-- SEÇÃO CONTATO COM ATENDIMENTO E NEWSLETTER -->
+<section class="contato-section" id="contato">
+  <h2>Fale Conosco 💌</h2>
+  <p>Estamos aqui para te ajudar com o que precisar!</p>
+  
+  <div class="contato-container">
+    
+    <!-- CARD 1: ATENDIMENTO (ASSISTENTE) -->
+    <div class="atendimento-card">
+      <!-- Troque o link da imagem abaixo pela foto da sua assistente se quiser -->
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="Atendente Bella Make">
+      <h3>Atendimento Bella Make</h3>
+      <p>Olá! Sou a Bella, sua assistente virtual. Como posso te ajudar hoje?</p>
+      <!-- COLOQUE SEU NÚMERO DE WHATSAPP NO LINK ABAIXO (com 55 e DDD) -->
+      <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20falar%20com%20o%20atendimento%20da%20Bella%20Make." target="_blank" class="btn-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chamar no WhatsApp
+      </a>
+    </div>
+
+    <!-- CARD 2: NEWSLETTER / E-MAIL -->
+    <div class="newsletter-card">
+      <h3>Ganhe 10% OFF</h3>
+      <p>Cadastre seu e-mail para receber novidades e ofertas exclusivas.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); mostrarToast('E-mail cadastrado com sucesso! 💌');">
+        <input type="email" placeholder="Seu melhor e-mail" required>
+        <button type="submit">Quero Desconto</button>
+      </form>
+    </div>
+
+  </div>
 </section>
 
 <div class="modal-overlay" id="overlay" onclick="fecharTodosModais()"></div>
@@ -633,7 +680,7 @@ function adicionarNovoProduto() {
   mostrarToast('Novo produto adicionado! 🎉');
 }
 
-// WHATSAPP
+// WHATSAPP FINALIZAR COMPRA
 function finalizarCompra() {
   if (carrinho.length === 0) {
     mostrarToast('Seu carrinho está vazio! 🛒');
